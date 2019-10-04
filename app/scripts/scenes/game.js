@@ -1,4 +1,4 @@
-import Logo from '@/objects/logo';
+import Square from '@/objects/square';
 
 export default class Game extends Phaser.Scene {
   /**
@@ -19,7 +19,9 @@ export default class Game extends Phaser.Scene {
    */
   create(/* data */) {
     //  TODO: Replace this content with really cool game code here :)
-    this.logo = this.add.existing(new Logo(this));
+    this.cursors = this.input.keyboard.createCursorKeys();
+    this.logo = this.add.existing(new Square(this));
+    this.speed = 1;
   }
 
   /**
@@ -30,7 +32,22 @@ export default class Game extends Phaser.Scene {
    *  @param {number} t Current internal clock time.
    *  @param {number} dt Time elapsed since last update.
    */
-  update(/* t, dt */) {
-    this.logo.update();
+  update() {
+    if (this.cursors.left.isDown) {
+      this.logo.setX(this.logo.x - this.speed);
+    }
+
+    if (this.cursors.right.isDown) {
+      this.logo.setX(this.logo.x + this.speed);
+    }
+
+    if (this.cursors.up.isDown) {
+      this.logo.setY(this.logo.y - this.speed);
+    }
+
+    if (this.cursors.down.isDown) {
+      this.logo.setY(this.logo.y + this.speed);
+    }
+
   }
 }

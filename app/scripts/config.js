@@ -175,6 +175,8 @@ export const plugins = {
  */
 export {title, version, url} from '@/../../package.json';
 
+export const inputKeyboard = true;
+
 /**
  *  Export created game scenes.
  */
