@@ -8,8 +8,6 @@ export default class Square extends Phaser.GameObjects.Sprite {
   constructor(scene) {
     super(scene, 0, 0, 'square');
 
-
-
     const x = scene.cameras.main.width / 2;
     const y = scene.cameras.main.height / 2;
 

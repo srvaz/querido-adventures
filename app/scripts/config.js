@@ -15,12 +15,12 @@ import * as scenes from '@/scenes';
 /**
  *  Game canvas width.
  */
-export const width = 640;
+export const width = 1280;
 
 /**
  *  Game canvas height.
  */
-export const height = 480;
+export const height = 800;
 
 /**
  *  Adjust zoom factor.
@@ -81,14 +81,19 @@ export const physics = {
    */
   // arcade: {
   // },
+  arcade: {
+    gravity: { y: 300 },
+    debug: false
+  },
 
   /**
    *  Matter.js parameters.
    *
    *  This engine becomes available under a `matter` property on game scenes.
    */
-  // matter: {
-  // },
+  matter: {
+    debug: true,
+  },
 
   /**
    *  Impact Physics Engine parameters.
@@ -101,7 +106,7 @@ export const physics = {
   /**
    *  Enable a physics engine by default on all game scenes.
    */
-  default: false
+  default: 'matter'
 };
 
 /**

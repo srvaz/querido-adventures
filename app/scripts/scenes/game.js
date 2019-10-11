@@ -20,8 +20,12 @@ export default class Game extends Phaser.Scene {
   create(/* data */) {
     //  TODO: Replace this content with really cool game code here :)
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.logo = this.add.existing(new Square(this));
+    this.square = new Square(this);
     this.speed = 1;
+
+    this.matter.world.setBounds(0, 0, this.sys.game.config.width,this.sys.game.config.height);
+
+    this.player = this.matter.add.sprite(this.sys.game.config.width/2,0,'square');
   }
 
   /**
@@ -33,21 +37,9 @@ export default class Game extends Phaser.Scene {
    *  @param {number} dt Time elapsed since last update.
    */
   update() {
-    if (this.cursors.left.isDown) {
-      this.logo.setX(this.logo.x - this.speed);
-    }
-
-    if (this.cursors.right.isDown) {
-      this.logo.setX(this.logo.x + this.speed);
-    }
-
     if (this.cursors.up.isDown) {
-      this.logo.setY(this.logo.y - this.speed);
+      //this.physics.accelerateTo(this.player, this.player.x, -400, 400);
+      this.player.applyForce(new Phaser.Math.Vector2(0,-0.5));
     }
-
-    if (this.cursors.down.isDown) {
-      this.logo.setY(this.logo.y + this.speed);
-    }
-
   }
 }
